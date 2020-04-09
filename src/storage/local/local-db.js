@@ -17,7 +17,7 @@ export default class LocalDb {
         if (!id) {
             throw new Error('local db requires and id to be passed to create.');
         }
-        await set(data, key, this.store);
+        await set(data, id, this.store);
 
         return {
             id: id,

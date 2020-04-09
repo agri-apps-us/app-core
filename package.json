@@ -1,6 +1,6 @@
 {
   "name": "@agri-apps-us/app-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/agri-apps.core.js",
   "module": "src/index.js",
