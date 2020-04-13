@@ -17,7 +17,7 @@ export default class LocalDb {
         if (!id) {
             throw new Error('local db requires and id to be passed to create.');
         }
-        await set(data, id, this.store);
+        await set(id, data, this.store);
 
         return {
             id: id,
@@ -61,9 +61,13 @@ export default class LocalDb {
    */
   async update(data) {
     const { id } = data;
-    if (!data) {
+
+    if (!id) {
         throw new Error('Missing id for update.');
     }
+
+    // attempt a merge
+    
 
     await set(id, data, this.store);
       
