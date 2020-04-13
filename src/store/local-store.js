@@ -10,6 +10,7 @@ const initializeStore = (state, storeName) => {
     );
   }
   state.initialized = true;
+  state.storeName = storeName;
   return true;
 };
 
@@ -18,7 +19,7 @@ const store = ({ data, getField, updateField, calculate }) => {
 
   localStore.subscribe((mutation, state) => {
     if (mutation.type === "updateField") {
-      localStorage.setItem(storeName, JSON.stringify(state));
+      localStorage.setItem(state.storeName, JSON.stringify(state));
       if (calculate && typeof calculate === "function") {
         calculate(state).then((result) => {
           store.dispatch("updateResults", result);
