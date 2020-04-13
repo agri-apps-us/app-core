@@ -2,7 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin')
 
-const externals = ['firebase', 'firebase/app', 'firebase/firestore', 'lodash']
+const externals = ['vue', 'vuex', 'lodash']
 
 module.exports = {
     mode: 'production',

@@ -1,28 +1,19 @@
 import makeStore from "./store";
 
-const initializeStore = (state, storeName) => {
-  if (localStorage.getItem(storeName)) {
-    this.replaceState(
-      Object.assign(state, {
-        ...JSON.parse(localStorage.getItem(storeName)),
-        initialized: true,
-      })
-    );
+const store = (storeName, { data, getField, updateField, calculate }) => {
+  if (!storeName) {
+    throw new Error("Missing store name argument.");
   }
-  state.initialized = true;
-  state.storeName = storeName;
-  return true;
-};
 
-const store = ({ data, getField, updateField, calculate }) => {
-  let localStore = makeStore({ data, getField, updateField, initializeStore });
+  let localStore = makeStore({ data, getField, updateField, calculate });
 
   localStore.subscribe((mutation, state) => {
     if (mutation.type === "updateField") {
-      localStorage.setItem(state.storeName, JSON.stringify(state));
+      const { initialized, ...payload } = state;
+      localStorage.setItem(storeName, JSON.stringify(payload));
       if (calculate && typeof calculate === "function") {
-        calculate(state).then((result) => {
-          store.dispatch("updateResults", result);
+        calculate(payload).then((result) => {
+          localStore.dispatch("updateResults", result);
         });
       }
     }

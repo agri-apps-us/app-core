@@ -1,6 +1,6 @@
 {
   "name": "@agri-apps-us/app-core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/agri-apps.core.js",
   "module": "src/index.js",
@@ -31,12 +31,7 @@
     "webpack-cli": "^3.3.11"
   },
   "peerDependencies": {
-    "firebase": "^7.13.2",
-    "idb-keyval": "^3.2.0",
-    "lodash": "^4.17.15"
-  },
-  "dependencies": {
     "vuex": "^3.1.3",
-    "vuex-map-fields": "^1.4.0"
+    "lodash": "^4.17.15"
   }
 }
